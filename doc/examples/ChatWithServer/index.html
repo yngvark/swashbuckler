@@ -1,0 +1,29 @@
+<html>
+<head>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+	console.log('Testing testing 7 2 4')
+	var socket = io.connect('http://localhost');
+	
+	function sayHello() {
+  		console.log("Hello!");
+  		socket.emit('hello');
+	}
+
+	function sendInput(event, input) {
+		if (event.keyCode == 13) {
+			console.log(input.value);
+			socket.emit('text', input.value);
+			input.value = ''
+		}
+	}
+
+</script>
+</head>
+<body>
+
+<h1>Hello!</h1>
+<button type="button" onclick="sayHello()">Hello!</button>
+<input type="text" onkeypress="sendInput(event, this)"></text>
+</body>
+</html> 
